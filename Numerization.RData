@@ -1,0 +1,4 @@
+df$visits <- as.numeric(df$visits)
+df$nights <- as.numeric(df$nights)
+df <- df %>% filter(!is.na(visits))
+

@@ -1,0 +1,40 @@
+library(dplyr)
+df <- read.csv(file = "dataset.csv",stringsAsFactors = FALSE)
+#************************************************************************************************
+dataset_UK_res <- df %>% filter(ukos=="UK residents") 
+x <- summary(dataset_UK_res$spend)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5 
+dataset_UK_res <- dataset_UK_res %>% filter(spend > TQR_down) %>% filter(spend<TQR_up)
+#************
+x <- summary(dataset_UK_res$visits)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5
+dataset_UK_res <- dataset_UK_res %>% filter(visits > TQR_down) %>% filter(visits<TQR_up)
+#************
+x <- summary(dataset_UK_res$nights)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5
+dataset_UK_res <- dataset_UK_res %>% filter(nights > TQR_down) %>% filter(nights<TQR_up)
+#*************************************************************************************************
+dataset_Overseas_res <- df %>% filter(ukos=="Overseas residents")
+x <- summary(dataset_Overseas_res$spend)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5
+dataset_Overseas_res <- dataset_Overseas_res %>% filter(spend > TQR_down) %>% filter(spend<TQR_up)
+#*************
+x <- summary(dataset_Overseas_res$visits)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5
+dataset_Overseas_res <- dataset_Overseas_res %>% filter(visits > TQR_down) %>% filter(visits<TQR_up)
+#*************
+x <- summary(dataset_Overseas_res$nights)
+TQR <- x[5] - x[2]
+TQR_up <- x[5] + TQR * 1.5
+TQR_down <- x[2] - TQR * 1.5
+dataset_Overseas_res <- dataset_Overseas_res %>% filter(nights > TQR_down) %>% filter(nights<TQR_up)

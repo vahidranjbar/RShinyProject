@@ -1,0 +1,7 @@
+library(vcd)
+library(scales)
+library(shiny)
+library(shinydashboard)
+library(readxl)
+library(plotrix)
+library(ggplot2)

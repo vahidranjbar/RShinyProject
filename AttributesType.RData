@@ -1,0 +1,3 @@
+categorical_attributes <- df %>% select(2:10)
+numerical_attributes <- df %>% select(-(2:10))
+

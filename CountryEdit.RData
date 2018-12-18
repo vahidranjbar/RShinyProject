@@ -1,0 +1,40 @@
+df <- read.csv(file = "dataset.csv",stringsAsFactors = FALSE)
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Europe <- c("Austria","Belgium","Bulgaria","Croatia","Czech Republic","Cyprus EU"," Cyprus Non EU",
+            "Denmark","Estonia","Finland", "France","Germany","Gibraltar","Greece","Hungary","Iceland",
+            "Irish Republic","Italy","Latvia","Lithuania","Luxembourg","Malta","Netherlands","Norway",
+            "Poland","Portugal","Romania","Russia","Spain","Slovakia","Slovenia","Sweden ","Switzerland","Turkey","Other Europe")
+Africa <- c("Egypt","Tunisia","Other North Africa","South Africa","Other Africa")
+MiddleEAST <- c("Israel","United Arab Emirates","Other Middle East")
+Asia <- c("China - Hong Kong","China - Other","India","Japan","Pakistan","Sri Lanka","Thailand", "Other Asia")
+NorthAmerica <- c("Canada","USA")
+OtherAmerica <- c("Mexico","Other Central & Sth.America","Barbados","Jamaica","Other Caribbean")
+Australia <- c("Australia","New Zealand")
+Others <- c("Other countries")
+continent <- function(arg){
+  for(i in seq(1,NROW(arg),by=1)){
+    
+    if(arg[i,"country"] %in% Europe)
+      df[i,"country"] <- "Europe"
+    else if (arg[i,"country"] %in% Africa)
+      df[i,"country"] <- "Africa"
+    else if (arg[i,"country"] %in% MiddleEAST)
+      df[i,"country"] <- "MiddleEAST"
+    else if (arg[i,"country"] %in% Asia)
+      df[i,"country"] <- "Asia"
+    else if (arg[i,"country"] %in% NorthAmerica)
+      df[i,"country"] <- "NorthAmerica"
+    else if (arg[i,"country"] %in% OtherAmerica)
+      df[i,"country"] <- "OtherAmerica"
+    else if (arg[i,"country"] %in% Australia)
+      df[i,"country"] <- "Australia"
+    else
+      df[i,"country"] <- "Others"
+    
+    
+  }
+  return(df)
+  
+}
+
+df <- continent(df)
